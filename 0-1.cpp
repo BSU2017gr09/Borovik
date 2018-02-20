@@ -31,17 +31,29 @@ int main() {
     int N;
     std::cin >> N;
     int *arr;
+
+
     try {
         arr = new int[N];
     }
     catch (...) {
         std::cout << "Нехватка памяти";
     }
+
     inputArray(arr, N);
+
+    std::cout << "Сгенерированный масcив:" << std::endl;
     printArray(arr, N);
+    std::cout << std::endl;
+
+
+    std::cout << "Количество элементов встречающихся более одного раза:" << std::endl;
     std::cout << Countsamenumb(arr, N) << std::endl;
+
     delete[] arr;
     return 0;
 }
+
+
 
 

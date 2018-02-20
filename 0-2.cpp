@@ -7,11 +7,6 @@ void inputArray(int *arr, int N) {
 }
 
 
-void inputArray1(int *arr, int N) {
-    for (int i = 0; i < N; ++i) { std::cin >> *(arr + i); }
-}
-
-
 void printArray(int *arr, int N) {
     for (int i = 0; i < N; ++i) { std::cout << *(arr + i) << " "; }
     std::cout << std::endl;
@@ -39,17 +34,27 @@ int main() {
     int N;
     std::cin >> N;
     int *arr;
+
     try {
         arr = new int[N];
     }
     catch (...) {
         std::cout << "Нехватка памяти";
     }
-    inputArray1(arr, N);
+
+    inputArray(arr, N);
+
+    std::cout << "Cгенерированный массив:" << std::endl;
     printArray(arr, N);
+    std::cout << std::endl;
+
+    std::cout << "Максимальная длинна последовательности" << std::endl;
     std::cout << Countline(arr, N) << std::endl;
+
     delete[] arr;
     return 0;
 }
+
+
 
 
