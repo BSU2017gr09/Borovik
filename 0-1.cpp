@@ -11,14 +11,6 @@ void printArray(int *arr, int N) {
     std::cout << std::endl;
 }
 
-int sum(int count) {
-    int sum = 0;
-    for (int i = 1; i < count; ++i) {
-        sum += i;
-    }
-    return sum;
-}
-
 int Countsamenumb(int *arr, int N) {
     int count = 0;
     int answer = 0;
