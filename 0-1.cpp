@@ -37,7 +37,7 @@ int main() {
         arr = new int[N];
     }
     catch (...) {
-        std::cout << "Нехватка памяти";
+        std::cout << "Нехватка памяти";//// и что????? Продолжаем работать!!!!
     }
 
     inputArray(arr, N);
