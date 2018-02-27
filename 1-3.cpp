@@ -72,8 +72,10 @@ int main() {
     int *arr;
     allocate(arr, N);
     inputArray(arr, N);
+    std::cout << "Source array:" << std::endl;
     printArray(arr, N);
     sort(arr, N);
+    std::cout << "Sorted array:" << std::endl;
     printArray(arr, N);
     free(arr);
     return 0;
