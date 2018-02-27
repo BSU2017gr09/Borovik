@@ -37,13 +37,13 @@ void printArray(int *x, int *y, int N) {
     std::cout << std::endl;
 }
 
-void printArrayd(double *distance, int N) {
-    for (int i = 0; i < N; i++) { std::cout << *(distance + i) << " "; }
+void printArrayd(double *dist, int N) {
+    for (int i = 0; i < N; i++) { std::cout << *(dist + i) << " "; }
     std::cout << std::endl;
 }
 
-void countDistance(int *x, int *y, double *distance, int a, int b, int c, int N) {
-    for (int i = 0; i < N; i++) *(distance + i) = abs(a * x[i] + b * y[i] + c) / sqrt(a * a + b * b);
+void countDistance(int *x, int *y, double *dist, int a, int b, int c, int N) {
+    for (int i = 0; i < N; i++) *(dist + i) = abs(a * x[i] + b * y[i] + c) / sqrt(a * a + b * b);
 }
 
 void sort(double *dist, int *x, int *y, int N) {
