@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <iostream>
-
+//Расположить в порядке возрастания элементы массива А(N), начиная с k-го элемента.
 unsigned long long int getTotalSystemMemory() {
     long pages = sysconf(_SC_PHYS_PAGES);
     long page_size = sysconf(_SC_PAGE_SIZE);

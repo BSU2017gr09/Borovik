@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <cmath>
-
+//Даны точки плоскости своими координатами в виде двух одномерных массивов. Точки плоскости рассортировать по возрастанию расстояния до прямой ax + by + c = 0.
 unsigned long long int getTotalSystemMemory() {
     long pages = sysconf(_SC_PHYS_PAGES);
     long page_size = sysconf(_SC_PAGE_SIZE);
