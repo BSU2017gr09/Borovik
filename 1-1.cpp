@@ -23,8 +23,8 @@ void sort(int *arr, int N, int k) {
     while (save) {
         save = false;
         for (int j = k; j < N - 1; ++j) {
-            if (arr[j] > arr[j + 1]) {
-                std::swap(arr[j], arr[j + 1]);
+            if (*(arr + j) > *(arr + j + 1)) {
+                std::swap(*(arr + j), *(arr + j + 1));
                 save = true;
             }
         }
