@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <ctime>
-Положительные элементы массива А(N) переставить в конец массива, сохраняя порядок следования. Отрицательные элементы расположить в порядке убывания.
+//Элементы целочисленного массива А(N), значения которых оказались простыми числами, расположить в порядке возрастания, не нарушая порядка следования других элементов.
 unsigned long long int getTotalSystemMemory() {
     long pages = sysconf(_SC_PHYS_PAGES);
     long page_size = sysconf(_SC_PAGE_SIZE);
@@ -12,7 +12,7 @@ unsigned long long int getTotalSystemMemory() {
 }
 
 void inputArray(int *arr, int N) {
-    for (int i = 0; i < N; ++i) { *(arr + i) = (-N) + rand() % (2 * N); }
+    for (int i = 0; i < N; ++i) { *(arr + i) = rand() % (10 * N); }
 }
 
 void printArray(int *arr, int N) {
@@ -20,28 +20,25 @@ void printArray(int *arr, int N) {
     std::cout << std::endl;
 }
 
+bool isPrime(int number) {
+    for (int i = 2; i <= sqrt(number); ++i) {
+        if (number % i == 0) { return false; }
+    }
+    return true;
+}
+
 void sort(int *arr, int N) {
     int save = true;
-    int q = 0;
     while (save) {
         save = false;
-        for (int j = N - 1; 0 < j; --j) {
-            if (*(arr + j - 1) >= 0 && *(arr + j) < 0) {
-                std::swap(*(arr + j - 1), *(arr + j));
-                save = true;
-            }
-        }
-    }
-    for (int i = 0; i < N; ++i) {
-        if (*(arr + i) < 0) { q++; }
-    }
-    save = true;
-    while (save) {
-        save = false;
-        for (int i = 0; i < q - 1; ++i) {
-            if (*(arr + i) < *(arr + i + 1)) {
-                std::swap(*(arr + i), *(arr + i + 1));
-                save = true;
+        for (int i = 0; i < N; ++i) {
+            if (isPrime(*(arr + i))) {
+                for (int j = i; j < N; ++j) {
+                    if (isPrime(*(arr + j)) && (*(arr + j) < *(arr + i))) {
+                        std::swap(*(arr + j), *(arr + i));
+                        save = true;
+                    }
+                }
             }
         }
     }
@@ -63,7 +60,6 @@ void allocate(int *&arr, int N) {
 }
 
 int main() {
-    time(nullptr);
     std::cout << "Available memory: ";
     std::cout << getTotalSystemMemory() << std::endl;
     int N = 0;
