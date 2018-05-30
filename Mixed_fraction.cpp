@@ -36,19 +36,19 @@ public:
 
     Mixed_fraction &operator+=(const Mixed_fraction &other);
 
-    friend ostream &operator<<(ostream &output, Mixed_fraction &tmp);
+    //friend ostream &operator<<(ostream &output, Mixed_fraction &tmp);
 
-    friend istream &operator>>(istream &input, Mixed_fraction &tmp);
+  //  friend istream &operator>>(istream &input, Mixed_fraction &tmp);
 
     bool operator==(const Mixed_fraction &tmp);
 
     bool operator!=(const Mixed_fraction &tmp);
 
-    void simplify();
+    //void simplify();
 
     void reduce();
 
-    ~Mixed_fraction() = default;
+  //  ~Mixed_fraction() = default;
 };
 
 Mixed_fraction::Mixed_fraction(int i, int n, int d) : integer_part(i), numerator(n), denominator(d) {}
@@ -106,7 +106,7 @@ void Mixed_fraction::simplify() {
     other.denominator = denominator;
     other.integer_part = integer_part;
     if (numerator < 0 && denominator > 0 && abs(numerator) > denominator) {
-        numerator = abs(other.numerator);
+        //numerator = abs(other.numerator);
         denominator = (-1) * other.denominator;
     }
     if (integer_part < 0 && (numerator > 0 && denominator > 0)) {
@@ -178,7 +178,7 @@ Mixed_fraction Mixed_fraction::operator+(const Mixed_fraction &other) {
     tmp.numerator =
             (integer_part * denominator + numerator) * other.denominator + (other.integer_part * other.denominator +
                                                                             tmp.numerator) * denominator;
-    tmp.simplify();
+  //  tmp.simplify();
     tmp.reduce();
     if (integer_part < 0) { numerator *= -1; }
     if (denominator == 0 && numerator == 0 && integer_part == 0) { return other; }
@@ -191,7 +191,7 @@ Mixed_fraction Mixed_fraction::operator-(const Mixed_fraction &other) {
     tmp.numerator =
             (integer_part * denominator + numerator) * other.denominator - (other.integer_part * other.denominator +
                                                                             other.numerator) * denominator;
-    tmp.simplify();
+  //  tmp.simplify();
     tmp.reduce();
     if (denominator == 0 && numerator == 0 && integer_part == 0) {
         tmp.denominator = other.denominator;
@@ -207,7 +207,7 @@ Mixed_fraction Mixed_fraction::operator*(const Mixed_fraction &other) {
     tmp.denominator = denominator * other.denominator;
     tmp.numerator =
             (integer_part * denominator + numerator) * (other.integer_part * other.denominator + other.numerator);
-    tmp.simplify();
+//    tmp.simplify();
     tmp.reduce();
     return tmp;
 }
@@ -217,7 +217,7 @@ Mixed_fraction Mixed_fraction::operator/(const Mixed_fraction &other) {
     tmp.denominator = denominator * (other.integer_part * other.denominator + other.numerator);
     tmp.numerator =
             (integer_part * denominator + numerator) * other.denominator;
-    tmp.simplify();
+//    tmp.simplify();
     tmp.reduce();
     return tmp;
 }
@@ -227,7 +227,7 @@ Mixed_fraction &Mixed_fraction::operator/=(const Mixed_fraction &other) {
     tmp.denominator = denominator * (other.integer_part * other.denominator + other.numerator);
     tmp.numerator =
             (integer_part * denominator + numerator) * other.denominator;
-    tmp.simplify();
+    //tmp.simplify();
     tmp.reduce();
     denominator = tmp.denominator;
     numerator = tmp.numerator;
@@ -242,7 +242,7 @@ Mixed_fraction &Mixed_fraction::operator+=(const Mixed_fraction &other) {
     tmp.numerator =
             (integer_part * denominator + numerator) * other.denominator + (other.integer_part * other.denominator +
                                                                             other.numerator) * denominator;
-    tmp.simplify();
+  //  tmp.simplify();
     tmp.reduce();
     if (integer_part < 0) { numerator *= -1; }
     denominator = tmp.denominator;
@@ -257,7 +257,7 @@ Mixed_fraction &Mixed_fraction::operator-=(const Mixed_fraction &other) {
     tmp.numerator =
             (integer_part * denominator + numerator) * other.denominator - (other.integer_part * other.denominator +
                                                                             other.numerator) * denominator;
-    tmp.simplify();
+  //  tmp.simplify();
     tmp.reduce();
     if (denominator == 0 && numerator == 0 && integer_part == 0) {
         tmp.denominator = other.denominator;
@@ -276,7 +276,7 @@ Mixed_fraction &Mixed_fraction::operator*=(const Mixed_fraction &other) {
     tmp.denominator = denominator * other.denominator;
     tmp.numerator =
             (integer_part * denominator + numerator) * (other.integer_part * other.denominator + other.numerator);
-    tmp.simplify();
+  //  tmp.simplify();
     tmp.reduce();
     denominator = tmp.denominator;
     numerator = tmp.numerator;
