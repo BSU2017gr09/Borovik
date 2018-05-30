@@ -12,18 +12,18 @@ private:
 
 
 public:
-    Auto() : year(0), price(0), mark(nullptr), color(nullptr) {};
+    Auto() : year(0), price(0), mark(nullptr), color(nullptr) {};//Порядок инициализации неверный
 
-    Auto(char *mark, char *color, int p = 0, int s = 0, int d = 0) : mark(nullptr), price(s), year(d), color(nullptr) {
+    Auto(char *m, char *c, int p = 0, int s = 0, int d = 0) : mark(nullptr), price(s), year(d), color(nullptr) {//Порядок инициализации неверный
         try {
-            mark = new char[strlen(mark) + 1];
-            color = new char[strlen(color) + 1];
+            mark = new char[strlen(m) + 1];
+            color = new char[strlen(c) + 1];
         }
         catch (...) {
             exit(1);
         }
-        strcpy(color, color);
-        strcpy(mark, mark);
+        strcpy(color, c);
+        strcpy(mark, m);
         
     }
 
@@ -57,6 +57,9 @@ public:
         } else {
             delete[] mark;
             delete[] color;
+            /*mark = new char[strlen(other.mark) + 1];
+            color = new char[strlen(other.color) + 1];*/
+// price=other.price; year=other.year;strcpy(mark, other.mark);strcpy(color, other.color); 
         }
     };
 
@@ -80,8 +83,8 @@ public:
     
 
     void setName(char *str) {
-        try {
-            this->mark = new char[strlen(str) + 1];
+        try {//delete[] mark;
+            mark = new char[strlen(str) + 1]; //утечка памяти
         }
         catch (...) {
             exit(1);
@@ -90,8 +93,8 @@ public:
     }
 
     void setColor(char *str) {
-        try {
-            this->color = new char[strlen(str) + 1];
+        try {//delete[] mark;
+            color = new char[strlen(str) + 1]; //утечка памяти
         }
         catch (...) {
             exit(1);
@@ -99,12 +102,14 @@ public:
         strcpy(color, str);
     }
 
-    void setPrice(int price) {
-        (*this).price = price;
+    void setPrice(int p) {
+        //надо проверким какие то
+        price = p; //лучше так
     }
 
-    void setYear(int year) {
-        (*this).year = year;
+    void setYear(int y) {
+        //надо проверким какие то
+        year = y;//лучше так
     }
 
     friend ostream &operator<<(ostream &output, Auto &tmp) {
