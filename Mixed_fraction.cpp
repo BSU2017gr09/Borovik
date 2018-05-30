@@ -172,16 +172,8 @@ void Mixed_fraction::simplify() {
 }
 
 Mixed_fraction Mixed_fraction::operator+(const Mixed_fraction &other) {
-    Mixed_fraction tmp;
-    tmp.denominator = other.denominator * denominator;
-    if (integer_part < 0) { tmp.numerator = (-1) * other.denominator; }
-    tmp.numerator =
-            (integer_part * denominator + numerator) * other.denominator + (other.integer_part * other.denominator +
-                                                                            tmp.numerator) * denominator;
-    tmp.simplify();
-    tmp.reduce();
-    if (integer_part < 0) { numerator *= -1; }
-    if (denominator == 0 && numerator == 0 && integer_part == 0) { return other; }
+    Mixed_fraction tmp(other); //tmp(this);
+    tmp+=this;//tmp+=other;
     return tmp;
 }
 
@@ -301,7 +293,7 @@ void Mixed_fraction::reduce() {
 int main() {
     Mixed_fraction a(13, 3, 5);
     Mixed_fraction b(12, 2, 3);
-    Mixed_fraction c(-3, 6, 5);
+    Mixed_fraction c(-3, 6, 5); // надо было бы массивчик и его отсортировать или еще что-то...
     //cout << a << endl;
     cout << b << endl;
     //a.simplify();
